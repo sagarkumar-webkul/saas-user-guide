@@ -1,0 +1,410 @@
+:root:where(:lang(fa)) {
+  --vp-font-family-base:
+    'Vazirmatn', 'Inter', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #0041ff 30%,
+    #41d1ff
+  );
+  /* Four overlapping blobs rather than one hard 50/50 split, so the blur
+     resolves into a mesh with depth instead of a flat disc. */
+  --vp-home-hero-image-background-image:
+    radial-gradient(circle at 28% 24%, rgba(65, 209, 255, 0.95) 0%, rgba(65, 209, 255, 0) 64%),
+    radial-gradient(circle at 76% 30%, rgba(0, 65, 255, 0.95) 0%, rgba(0, 65, 255, 0) 64%),
+    radial-gradient(circle at 64% 78%, rgba(124, 58, 237, 0.85) 0%, rgba(124, 58, 237, 0) 66%),
+    radial-gradient(circle at 24% 74%, rgba(0, 132, 255, 0.9) 0%, rgba(0, 132, 255, 0) 64%);
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+html.dark {
+color-scheme:initial!important;
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+/* The wordmark is the only branding in the nav bar (siteTitle is off), so it
+   has to carry the site's identity on its own. At 100px it read as a favicon
+   with text attached. Give it room, and let the nav bar grow to hold it. */
+.logo {
+    width: 170px !important;
+    height: auto !important;
+}
+
+@media (max-width: 767px) {
+  .logo {
+    width: 140px !important;
+  }
+}
+
+.VPHero .VPImage {
+  filter:
+    drop-shadow(0 22px 40px rgba(0, 18, 68, 0.5))
+    drop-shadow(0 6px 14px rgba(0, 65, 255, 0.35));
+  padding: 18px;
+  scale: 1.2;
+}
+
+.VPSidebar .VPSidebarItem.level-0 > .item .text {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}
+
+.VPSidebar .VPSidebarItem.level-0.has-active:not(.is-active) > .item .text {
+  color: var(--vp-c-brand-1);
+}
+
+/* Pull the first child up towards its title, and hold the groups apart. */
+.VPSidebar .VPSidebarItem.level-0 > .item {
+  padding-bottom: 2px;
+}
+
+.VPSidebar .VPSidebarItem.level-0 {
+  padding-bottom: 20px;
+}
+
+.VPSidebar .VPSidebarItem.level-1 .link .text {
+  font-weight: 500;
+}
+
+:root {
+  --uc-scrollbar-thumb: var(--vp-c-gray-1);
+  --uc-scrollbar-thumb-hover: var(--vp-c-text-3);
+}
+
+html,
+.VPSidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--uc-scrollbar-thumb) transparent;
+}
+
+html::-webkit-scrollbar,
+.VPSidebar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html::-webkit-scrollbar-track,
+.VPSidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+.VPSidebar::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-color: var(--uc-scrollbar-thumb);
+  background-clip: padding-box;
+  transition: background-color 0.25s;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+.VPSidebar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--uc-scrollbar-thumb-hover);
+}
+
+/* The corner where a horizontal and a vertical bar meet, left unpainted. */
+html::-webkit-scrollbar-corner,
+.VPSidebar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@media (min-width: 960px) {
+  .VPSidebar {
+    border-inline-end: 1px solid var(--vp-c-divider);
+  }
+}
+
+.VPSidebar .nav > .group:first-of-type {
+  padding-top: 0;
+}
+
+:root {
+  /* Hits carry no outline of their own; the selection is a soft fill. */
+  --vp-local-search-result-border: transparent;
+  --vp-local-search-result-selected-border: transparent;
+
+  --vp-local-search-result-selected-bg: var(--vp-c-bg-alt);
+  --vp-local-search-result-selected-bg: color-mix(
+    in srgb,
+    var(--vp-c-brand-1) 7%,
+    var(--vp-c-bg)
+  );
+
+  /* A tint of the brand behind matched words, rather than a solid block. */
+  --vp-local-search-highlight-bg: var(--vp-c-brand-soft);
+  --vp-local-search-highlight-text: var(--vp-c-brand-1);
+}
+
+.VPLocalSearchBox .backdrop + .shell {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+}
+
+.VPLocalSearchBox .backdrop {
+  backdrop-filter: blur(6px);
+}
+
+.VPLocalSearchBox .shell .search-bar {
+  border-radius: 10px;
+  padding: 2px 12px;
+}
+
+/* A ring rather than a bare colour change, so focus reads at a glance. */
+.VPLocalSearchBox .shell .search-bar:focus-within {
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+.VPLocalSearchBox .results .result {
+  border-radius: 10px;
+}
+
+.VPLocalSearchBox .results .result.selected {
+  background-color: var(--vp-local-search-result-selected-bg);
+}
+
+/* Nothing has been typed yet: say what the box is for instead of a blank. */
+.VPLocalSearchBox .shell .results:empty::after {
+  display: block;
+  padding: 28px 12px 32px;
+  content: 'Search the documentation — try a page name, a setting, or a task.';
+  color: var(--vp-c-text-3);
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .VPNavBarSearch .DocSearch-Button {
+    border-color: var(--vp-c-divider);
+    border-radius: 10px;
+    transition:
+      border-color 0.25s,
+      background-color 0.25s;
+  }
+
+  .VPNavBarSearch .DocSearch-Button:hover {
+    border-color: var(--vp-c-brand-1);
+    background-color: var(--vp-c-bg-elv);
+  }
+
+  .VPNavBarSearch .DocSearch-Button-Key {
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 6px;
+    background: var(--vp-c-bg);
+    padding-bottom: 0;
+    line-height: 18px;
+  }
+}
+
+/* The hero image sits on a blurred two-tone wash. Bleed the same wash out from
+   behind a feature card while it is hovered, and lift the card off it.
+
+   The wash hangs on the grid cell rather than the card: the card carries a
+   transform on hover, which would make it a stacking context and drag a
+   z-index: -1 child up over its own background. */
+.Layout .VPFeatures .item {
+  position: relative;
+  isolation: isolate;
+}
+
+.Layout .VPFeatures .item::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 20px; /* inside the card's edges, so the wash reads as a halo */
+  border-radius: 12px;
+  background-image: var(--vp-home-hero-image-background-image);
+  filter: blur(24px);
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.Layout .VPFeatures .item:has(.VPFeature.link:hover)::before {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.Layout .VPFeature {
+  transition: border-color 0.25s, background-color 0.25s, transform 0.25s;
+}
+
+.Layout .VPFeature.link:hover {
+  transform: translateY(-4px);
+}
+
+/* Centre the icon and copy inside each feature card. */
+.Layout .VPFeature .box {
+  align-items: center;
+  text-align: center;
+}
+
+/* Within the 1152px band the stock hero starts both columns at the top, holds
+   the heading to 576px so it breaks into four short lines, and leaves the logo
+   floating in the leftover space rather than on the band's edge. Sized against
+   the band, not the viewport, so it stays put as the window grows. */
+@media (min-width: 960px) {
+  /* Both columns on one centre line, rather than each starting at the top,
+     and never closer than the gap. */
+  .Layout .VPHero .container {
+    align-items: center;
+    gap: 56px;
+  }
+
+  .Layout .VPHero.has-image .main {
+    flex-shrink: 1;
+    max-width: 600px;
+  }
+
+  .Layout .VPHero.has-image .name,
+  .Layout .VPHero.has-image .text {
+    max-width: 600px;
+    line-height: 1.12;
+    font-size: 60px;
+  }
+
+  .Layout .VPHero.has-image .tagline {
+    max-width: 560px;
+    line-height: 1.5;
+  }
+
+  /* Push the logo out to the band's right edge, answering the heading's left. */
+  .Layout .VPHero .image {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-inline-start: auto;
+  }
+
+  .Layout .VPHero .image-container {
+    width: 560px;
+    height: 560px;
+    transform: none;
+  }
+
+  .Layout .VPHero .image-bg {
+    width: 480px;
+    height: 480px;
+  }
+
+  /* The site's own scale()/padding on the logo composes with the theme's
+     translate(-50%), knocking it 40px off the edge it should sit on. Size it
+     outright here instead. The logo is wider than it is tall, so width is what
+     actually binds — cap height well above it or the logo never reaches the
+     width it is given. */
+  .Layout .VPHero .image-src {
+    padding: 0;
+    scale: none;
+    width: 100%;
+    max-width: 560px;
+    max-height: 560px;
+  }
+}
+
+/* Below the 960px band the theme's default hero image is small enough that the
+   logo reads as an afterthought next to the heading. Give it real presence at
+   every width, not just the widest one. */
+@media (min-width: 640px) and (max-width: 959px) {
+  .Layout .VPHero .image-container {
+    width: 400px;
+    height: 400px;
+  }
+
+  .Layout .VPHero .image-bg {
+    width: 340px;
+    height: 340px;
+  }
+
+  .Layout .VPHero .image-src {
+    max-width: 400px;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 639px) {
+  .Layout .VPHero .image-src {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+/* A still blob reads as a flat sticker. Drift the mesh and let the logo ride
+   on it, slowly enough to register as depth rather than as an animation. */
+@keyframes uc-hero-glow {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.06);
+  }
+
+  /* A whole turn, so the loop seam lands where it started and never jumps. */
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes uc-hero-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+.Layout .VPHero .image-bg {
+  /* Linear: an eased turn would visibly stall each time it comes round. */
+  animation: uc-hero-glow 20s linear infinite;
+  will-change: transform;
+}
+
+.Layout .VPHero .image-src {
+  animation: uc-hero-float 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .Layout .VPHero .image-bg,
+  .Layout .VPHero .image-src {
+    animation: none;
+  }
+}
+
+/* Carry the hero's own wash onto the primary action so the two read as one
+   surface. The mesh fades to transparent at its edges, so it sits on the brand
+   colour rather than replacing it. */
+.Layout .VPButton.brand {
+  border-color: transparent;
+  background-color: var(--vp-c-brand-1);
+  background-image: var(--vp-home-hero-image-background-image);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  transition: background-position 0.45s ease, filter 0.25s;
+}
+
+.Layout .VPButton.brand:hover {
+  background-color: var(--vp-c-brand-1);
+  background-position: 100% 50%;
+  filter: brightness(1.06);
+}
+
+/* The wash hides the theme's pressed colour, so dim it instead. */
+.Layout .VPButton.brand:active {
+  filter: brightness(0.94);
+}

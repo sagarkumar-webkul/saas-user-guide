@@ -1,0 +1,16 @@
+{
+  "name": "bagisto-saas-user-guide",
+  "description": "Bagisto Multi-Tenant SaaS user documentation",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "serve": "^14.2.5"
+  }
+}

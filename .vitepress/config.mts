@@ -60,7 +60,17 @@ export default defineConfig({
       {
         text: "Getting Started",
         collapsed: false,
-        items: [{ text: "Introduction", link: "/getting-started/introduction" }],
+        items: [
+          {
+            text: "Introduction",
+            link: "/getting-started/introduction",
+            collapsed: false,
+            items: [
+              { text: "Single Database", link: "/getting-started/single-database" },
+              { text: "Multiple Databases", link: "/getting-started/multi-database" },
+            ],
+          },
+        ],
       },
       {
         text: "Super Admin",

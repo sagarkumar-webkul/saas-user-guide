@@ -4,6 +4,7 @@
 
 ::: info What you'll learn
 - Who the two audiences of the platform are
+- The two types of multi-tenant setup: single database and multiple databases
 - What a super admin controls and what a tenant controls
 - Where to go next for each task
 :::
@@ -16,6 +17,15 @@ The platform is run from two separate panels.
 - The **Tenant Admin panel** is a Bagisto-like backend each merchant uses to run their own store.
 
 <ImagePopup src="/images/introduction/multi-tenant.webp" alt="Multi-tenant SaaS platform overview" />
+
+## Two types of multi-tenant setup
+
+The module comes in two variants. Both give every tenant its own storefront, admin panel, and isolated store data — the difference is where that data is stored.
+
+- **[Single Database](/getting-started/single-database)** — all tenants share one database and are separated by a tenant identifier. Cheapest and simplest to maintain, and a good fit for many smaller stores.
+- **[Multiple Databases](/getting-started/multi-database)** — each tenant gets its own dedicated database, created when the merchant registers. Strongest isolation, with per-tenant backups and independent scaling.
+
+Everything else in this guide — panels, plans, tenants, and settings — works the same way in both variants.
 
 ## What the super admin does
 
